@@ -1,6 +1,6 @@
 services:
   php:
-    image: ${IMAGES_PREFIX:-}app-php
+    image: php:8.3.20-fpm
     restart: unless-stopped
     environment:
       SERVER_NAME: ${SERVER_NAME:-localhost}, php:80
@@ -25,11 +25,11 @@ services:
         protocol: tcp
       # HTTPS
       - target: 443
-        published: ${HTTPS_PORT:-443}
+        published: ${HTTPS_PORT:-453}
         protocol: tcp
       # HTTP/3
       - target: 443
-        published: ${HTTP3_PORT:-443}
+        published: ${HTTP3_PORT:-453}
         protocol: udp
 
 # Mercure is installed as a Caddy module, prevent the Flex recipe from installing another service
